@@ -5,12 +5,12 @@ class Stack {
     int top;
 
 public:
-    Stack(int stackSize) {
-        data = new char[stackSize];
-        top = -1;
-    }
+    Stack(int stackSize): top{-1}, data{new T[stackSize]} {}
 
-    ~Stack() {}
+    ~Stack() {
+        delete[] data;
+        data = nullptr;
+    }
 
     void push(T inputData) {
         data[top + 1] = inputData;
